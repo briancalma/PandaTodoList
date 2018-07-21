@@ -1,0 +1,32 @@
+<div class="container">
+    <br>
+    <div class="card bg-primary" style="color:bisque">
+        <div class="card-header">TODO</div>
+        <div class="card-body">
+            <div class="card bg-info" *ngFor="let task of unFinishtasks;let i=index;" style="margin-top: 10px;">
+              <div class="card-body">
+                <input type="checkbox" (change)="removeTask(i)">  {{task}}
+              </div>
+            </div>
+        </div>
+        <div class="card-footer">
+          <form (submit)="addNewTask(task.value)">
+            <label>Enter Task: </label>
+            <input type="text" placeholder="* Enter Task" class="form-control" #task>
+          </form>
+        </div>
+    </div>
+
+    <br>
+    <div class="card bg-success" style="color:bisque">
+        <div class="card-header">
+          <div class="row">
+            <div class="col">Finished Tasks</div>
+            <div class="col">Total : {{finishedTasks.length}} / {{unFinishtasks.length}}</div>
+          </div>
+        </div>
+        <div class="card-body">
+            <p *ngFor="let item of finishedTasks;">{{item}}</p>
+        </div>
+    </div>
+</div>
