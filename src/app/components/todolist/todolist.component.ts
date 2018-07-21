@@ -7,32 +7,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodolistComponent implements OnInit {
 
+  // declarations
   unFinishtasks:string[];
   finishedTasks:string[];
-
-  unFinishTaskCount:number;
-  finishedTaskCount:number;
-
+ 
   constructor() { }
 
   ngOnInit() {
-    this.unFinishtasks = ['Eat','Code','Sleep'];
+    // Initialization
+    this.unFinishtasks = [];
     this.finishedTasks = [];
-    this.finishedTaskCount = this.finishedTasks.length;
-    this.unFinishTaskCount = this.unFinishtasks.length;
   }
 
   addNewTask(val) {
+    // adding a new task to the unfinishedtask array 
     this.unFinishtasks.unshift(val);
     return false;
   }
 
   removeTask(val) {
-    // this.finishedTasks.push(this.finishedTasks[val]);
+    // this will remove a task using the val as an index 
+    // but before removing the task this will add it to the finished task array.
     let task = this.unFinishtasks[val];
-
     this.finishedTasks.unshift(task);
-
     this.unFinishtasks.splice(val,1);
   }
 
